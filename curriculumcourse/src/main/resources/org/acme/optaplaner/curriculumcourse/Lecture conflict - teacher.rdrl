@@ -1,0 +1,14 @@
+package org.acme.optaplaner.curriculumcourse;
+
+import java.lang.Number;
+
+rule "Lecture conflict - teacher"
+	dialect "mvel"
+	when
+		$leftCourse : Course( )
+		$rightCourse : Course( id >= $leftCourse.id , teacher == $leftCourse.teacher )
+		$leftLecture : Lecture( course == $leftCourse , $leftPeriod : period != null )
+		Lecture( course == $rightCourse , period == $leftPeriod , this != $leftLecture )
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
