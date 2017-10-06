@@ -1,4 +1,4 @@
-package org.acme.optaplaner.curriculumcourse;
+package org.acme.optaplanner.curriculumcourse;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class Day implements java.io.Serializable {
 
     public Day() {
     }
-    
+
     private static final String[] WEEKDAYS = {"Mo", "Tu", "We", "Th", "Fr", "Sat", "Sun"};
 
     private int dayIndex;

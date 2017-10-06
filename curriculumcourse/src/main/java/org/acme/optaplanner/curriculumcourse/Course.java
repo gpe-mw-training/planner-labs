@@ -1,4 +1,4 @@
-package org.acme.optaplaner.curriculumcourse;
+package org.acme.optaplanner.curriculumcourse;
 
 import java.util.List;
 
