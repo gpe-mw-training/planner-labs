@@ -106,10 +106,10 @@ public class Course implements java.io.Serializable
    public Course(
          java.lang.Long id,
          java.lang.String code,
-         org.acme.optaplaner.curriculumcourse.Teacher teacher,
+         org.acme.optaplanner.curriculumcourse.Teacher teacher,
          int lectureSize,
          int minWorkingDaySize,
-         java.util.List<org.acme.optaplaner.curriculumcourse.Curriculum> curriculumList,
+         java.util.List<org.acme.optaplanner.curriculumcourse.Curriculum> curriculumList,
          int studentSize)
    {
       this.id = id;

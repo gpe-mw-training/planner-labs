@@ -10,13 +10,13 @@ public class Lecture implements java.io.Serializable
    static final long serialVersionUID = 1L;
 
    @org.kie.api.definition.type.Label(value = "Course")
-   private org.acme.optaplaner.curriculumcourse.Course course;
+   private org.acme.optaplanner.curriculumcourse.Course course;
    @org.kie.api.definition.type.Label(value = "Lecture Index In Course")
    private java.lang.Integer lectureIndexInCourse;
    @org.kie.api.definition.type.Label(value = "Period")
-   private org.acme.optaplaner.curriculumcourse.Period period;
+   private org.acme.optaplanner.curriculumcourse.Period period;
    @org.kie.api.definition.type.Label(value = "Room")
-   private org.acme.optaplaner.curriculumcourse.Room room;
+   private org.acme.optaplanner.curriculumcourse.Room room;
    @org.kie.api.definition.type.Label(value = "Id")
    private java.lang.Long id;
 
@@ -24,12 +24,12 @@ public class Lecture implements java.io.Serializable
    {
    }
 
-   public org.acme.optaplaner.curriculumcourse.Course getCourse()
+   public org.acme.optaplanner.curriculumcourse.Course getCourse()
    {
       return this.course;
    }
 
-   public void setCourse(org.acme.optaplaner.curriculumcourse.Course course)
+   public void setCourse(org.acme.optaplanner.curriculumcourse.Course course)
    {
       this.course = course;
    }
@@ -44,22 +44,22 @@ public class Lecture implements java.io.Serializable
       this.lectureIndexInCourse = lectureIndexInCourse;
    }
 
-   public org.acme.optaplaner.curriculumcourse.Period getPeriod()
+   public org.acme.optaplanner.curriculumcourse.Period getPeriod()
    {
       return this.period;
    }
 
-   public void setPeriod(org.acme.optaplaner.curriculumcourse.Period period)
+   public void setPeriod(org.acme.optaplanner.curriculumcourse.Period period)
    {
       this.period = period;
    }
 
-   public org.acme.optaplaner.curriculumcourse.Room getRoom()
+   public org.acme.optaplanner.curriculumcourse.Room getRoom()
    {
       return this.room;
    }
 
-   public void setRoom(org.acme.optaplaner.curriculumcourse.Room room)
+   public void setRoom(org.acme.optaplanner.curriculumcourse.Room room)
    {
       this.room = room;
    }
@@ -74,10 +74,10 @@ public class Lecture implements java.io.Serializable
       this.id = id;
    }
 
-   public Lecture(org.acme.optaplaner.curriculumcourse.Course course,
+   public Lecture(org.acme.optaplanner.curriculumcourse.Course course,
          java.lang.Integer lectureIndexInCourse,
-         org.acme.optaplaner.curriculumcourse.Period period,
-         org.acme.optaplaner.curriculumcourse.Room room, java.lang.Long id)
+         org.acme.optaplanner.curriculumcourse.Period period,
+         org.acme.optaplanner.curriculumcourse.Room room, java.lang.Long id)
    {
       this.course = course;
       this.lectureIndexInCourse = lectureIndexInCourse;
