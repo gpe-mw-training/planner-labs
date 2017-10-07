@@ -3,7 +3,7 @@
 In this section you install the course VirtualBox virtual machine on your local workstation.
 
 ## Acquire
-Download rhte-process-driven-apps.vdi directly from: https://drive.google.com/open?id=0B8mmXW6hJKdibi1nZkFtQlNycmc.
+Download rhte-process-driven-apps.vdi directly from: https://drive.google.com/open?id=0B8mmXW6hJKdiY3plcThWbzBCakk.
 ## VM Operating System Credentials
 * The default username/password for the VM is jboss/jboss.
 * The jboss operating system user has sudo access.

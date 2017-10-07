@@ -1,5 +1,5 @@
-# Resource Planner Laboratory Instructions
-## Goals
+# 1. Resource Planner Laboratory Instructions
+## 1.1. Goals
 * Use Resource Planner authoring tools within Business Central.
 * Deploy a Resource Planner project in the KIE Server.
 * Use the KIE Serer REST API to solve a problem configuration.
@@ -38,13 +38,15 @@ Soft constraints:
 * Curriculum compactness: Lectures belonging to the same curriculum should be adjacent to each other (so in consecutive periods).
 * Room stability: Lectures of the same course should be assigned the same room.
 
-## Activity Prerequisites
+## 1.2. Activity Prerequisites
 * Installation and configuration of the rhte-process-driven-apps.vdi ([read instructions](vdi_installation.md)).
 * Business Central and KIE Server EAP instances up and running in the rhte-process-driven-apps virtual machine.
 * `Acme` organizational unit created in the Business Central.
 
-# Setup Activity Environment
-## Enable Resource Planner Authoring and Runtime
+# 2. Setup Activity Environment
+If at any point you get stuck with the development lab instructions or if you are only interested with looking at the deployment and working solution of this project: go directly to [4.2. Deploying to unmanaged KIE Server].
+
+## 2.1. Enable Resource Planner Authoring and Runtime
 Resource Planner is included in the JBoss BPM Suite distribution for Business Central and KIE Server.
 In this section we will review the required instructions to enable authoring and run time for the Resource Planner.
 
@@ -89,3 +91,101 @@ In this section we will review the required instructions to enable authoring and
   * Search for the `solver` endpoints:
     ![KIE Server: API > Solver Endpoints](kie-server-solver-endpoints.png)
   > If you are unable to find the solver endpoints, double check the kieserver `standalone.conf` extension disable value and restart the kieserver EAP instance; There is a common mistake to edit the `standalone.conf` from the business central EAP instance instead of the KIE Server one, check that this is not your case.
+
+# 3. Enhace the Model using Optaplanner Annotations
+## 3.1. Select the project
+1. Select the **Authoring**>**Project Authoring** menu option.
+  ![Business Central: Authoring > Administration](bc-authoring-admin.png)
+2. From the `acme` organization, select the `planner-labs` repository and the `curriculumcourse` project.
+  ![Business Central: Curriculum course project](curriculumcourse-project.png)
+
+## 3.2. Add Optaplanner annotations
+
+![curriculum course class diagram](curriculumCourseClassDiagram.png)
+When planning the solution we identify:
+* `@PlanningEntity`: The object that changes it's state during planning. In this case is the `Lecture`: Because we don't know in advance in which `Room` and time `Period` the `Lecture` will be given.
+* `@PlanningVariable`: Attributes that change over the time.
+* `@PlanningSolution`: Doesn't provide help in modeling the problem, it is used by Optaplanner to reference all `planning entities` and `planning facts` that are used in the solving process.
+
+With the `curriculumcourse` project selected, these are the configuration steps to add the Optaplanner annotations on selected data objects of our project:
+
+1. Navigate to the org.acme.optaplanner.curriculumcourse package:
+  ![Business Central: Curriculum course package](CourseSchedule-dto.png)
+2. Select the `CourseSchedule` Data Object and using the Optaplanner editor in the right side of the screen: Select the `Planning Solution` with `Hard Soft Score` solution score type.
+  ![Optaplanner: Editor for planning solution](CurriculumCourse-planning-solution.png)
+3. From the field list of the `CourseSchedule` object: Select the `lectureList` field, and using the Optaplanner editor, activate the `Planning Entity Collection` checkbox.
+  ![Optaplanner: Editor for planning solution > Planning entity collection](lectureList-planning-entity-collection.png)
+4. Using the Optaplanner editor:
+  1. Set the `periodList` field as a `Planning Value Range Provider` with the **id:** `periodRange`
+  2. Set the `roomList` field as a `Planning Value Range Provider` with the **id:** `roomRange`
+5. Save the `CourseSchedule` data object.
+6. Select the `Lecture` Data Object and using the Optaplanner editor: Select the `Planning Entity` option.
+7. Using the Optaplanner editor:
+  1. Set the `period` field of the `Lecture` Data Object as a `Planning Variable` and set the **valueRangeId:** as `periodRange`
+  2. Set the `room`field as a `Planning Variable` and set the **valueRangeId:** as `roomRange`
+8. Save the `Lecture` data object.
+
+## 3.3. Add Solver Configuration
+
+1. With the `curriculumcourse` project selected, and within the org.acme.optaplanner.curriculumcourse package: Select **New item** > **Solver Configuration** menu option.
+2. Name the `Solver configuration` as `curriculumCourseSolverConfig`
+  ![Business Central: Solver config creation](curriculumCourseSolverConfig-creation.png)
+3. Set a **Spent Limit** of `1 minute` to find a solution.
+4. Save and close the `curriculumSolverConfig`
+
+## 3.4. Creating a capacity rule
+
+If the capacity of the room is exceeded we will execute a rule to decrease the `solution score`.
+
+1. With the `curriculumcourse` project selected, and within the org.acme.optaplanner.curriculumcourse package: Select **New item** > **Guided Rule** menu option.
+2. Name the `Guided Rule` as `Room capacity`
+  ![Business Central: Create guided rule](room-capacity-rule-creation.png)
+3. From the `When` conditions:
+  1. Add a condition for room to exists and assign the room value to a local rule variable (`$room`).
+  2. Add a condition for a lecture to exists with the same room value as in previous step.
+  3. Add a condition for the lecture course student size greater than the room capacity and assign the expression for the student size to a local rule variable(`$studentSize`). (**Tip:** You will use an expression editor in the Lecture when condition from _step 2_).
+    * At the end of these conditions the rule should look like this:
+      ![Guided Rule: room capacity when conditions](room-capacity-when-conditions.png)
+4. Add a free from DRL for the `THEN` action:
+  * The DRL expression for the free from DRL:
+    ```java
+    scoreHolder.addHardConstraintMatch(kcontext, $room.capacity - $studentSize);
+    ```
+  * At the end of the `THEN` action configuration, the final result for the rule should look like this:
+    ![Guided Rule: room capacity rule](room-capacity-rule.png)
+5. Save the rule and close the editors.
+
+# 4. Deploy solver solution
+
+## 4.1. Deploying from Business Central to managed KIE Server.
+
+1. With the `curriculumcourse` project selected: Select the **Open Project Editor** button from the `Project Explorer` header.
+2. Select the `Build and Deploy` option from the `Build` command drop down in the `Project Editor`
+3. You should receive confirmation of successful build.
+4. Select the **Deploy** > **Execution Servers** menu option from the JBoss BPM Suite menu bar.
+5. Add a new kie server container with the following values:
+  * **Name:** curriculum-course-1.0
+  * **Group Name:** org.acme.optaplanner
+  * **Artifact Id:** curriculumcourse
+  * **Version:** 1.0
+    ![Business Central: create container](curriculum-course-container.png)
+6. Finish the container creation.
+7. Start the container using the `Start` button.
+  ![Business Central: start container](curriculum-course-start-container.png)
+
+## 4.2. Deploying to unmanaged KIE Server
+
+The following steps are optional:
+* Use them when deploying a completed solution from git repository to the KIE Server. This option would succeed if you only want to try the solution integration, but you don't want to go through the development process in Business Central.
+
+1. Change directory to `~/lab` and clone the gitHub repository locally.
+  ```bash
+  cat ~/lab/bpms/kieserver/bin/standalone.conf | grep optaplanner
+  ```
+2. Checkout the `solved` branch.
+3. Use maven to build the component jar file.
+4. Use the KIE Server REST API to create a container based on the previously created jar.
+
+# 5. Use the solution with the KIE Server REST API.
+# 5.1. Explore the dataset
+# 5.2. Invoke the REST API with the given dataset
