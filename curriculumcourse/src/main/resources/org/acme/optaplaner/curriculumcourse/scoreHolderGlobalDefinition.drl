@@ -1,0 +1,5 @@
+package org.acme.optaplaner.curriculumcourse;
+
+import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScoreHolder;
+
+global HardSoftScoreHolder scoreHolder;

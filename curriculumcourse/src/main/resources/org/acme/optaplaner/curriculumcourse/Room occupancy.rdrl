@@ -1,0 +1,13 @@
+package org.acme.optaplaner.curriculumcourse;
+
+import java.lang.Number;
+
+rule "Room occupancy"
+	dialect "mvel"
+	when
+		$lecture : Lecture( period != null , room != null )
+		not (Lecture( period == $lecture.period , room == $lecture.room , id < $lecture.id )) 
+		Lecture( period == $lecture.period , room == $lecture.room , id > $lecture.id )
+	then
+		scoreHolder.addHardConstraintMatch(kcontext, -1);
+end
