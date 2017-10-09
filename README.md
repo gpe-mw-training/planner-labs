@@ -30,7 +30,7 @@ Hard constraints:
 * Teacher conflict: A teacher must not have 2 lectures in the same period.
 * Curriculum conflict: A curriculum must not have 2 lectures in the same period.
 * Room occupancy: 2 lectures must not be in the same room in the same period.
-* Unavailable period (specified per dataset): A specific lecture must not be assigned to a specific period.
+* Unavailable period (specified per data set): A specific lecture must not be assigned to a specific period.
 
 Soft constraints:
 * Room capacity: A room’s capacity should not be less than the number of students in its lecture.
@@ -50,7 +50,7 @@ If at any point you get stuck with the development lab instructions or if you ar
 Resource Planner is included in the JBoss BPM Suite distribution for Business Central and KIE Server.
 In this section we will review the required instructions to enable authoring and run time for the Resource Planner.
 
-1. Open a terminal window and change to the business central EAP instance configuration folder and edith the `application-roles.properties` file:
+1. Open a terminal window and change to the business central EAP instance configuration directory and edit the `application-roles.properties` file:
   ```bash
   cd ~/lab/bpms/bc/standalone/configuration
   pluma  application-roles.properties
@@ -204,5 +204,24 @@ The following steps are optional:
   curl -X GET -H "Accept: application/json" --user jboss:bpms http://localhost:8230/kie-server/services/rest/server/containers
   ```
 # 5. Use the solution with the KIE Server REST API.
-## 5.1. Explore the dataset
+## 5.1. Explore the data set
+In the example data set there is:
+* 17 Lectures to accommodate in 3 rooms.
+* Room capacities: 1 room for 150 students; 2 rooms for 50 students.
+* 4 periods (8-9; 9-10; 10-11 and 11-12) for each one of the days: Monday, Tuesday and Wednesday.
+* 8 courses to be imparted in the 17 lectures by 3 teachers in 2 different curriculum categories.
+
 ## 5.2. Invoke the REST API with the given dataset
+1. Set a variable for your container name:
+  * If you are using the managed KIE Server with Business Central, please note that in section 4.1, step 5: the name `curriculum-course-1.0` was selected. With this in mind you will create the container name variable like this:
+    ```bash
+    export CONTAINER_NAME=curriculum-course-1.0
+    ```
+  * If you are using the unmanaged KIE Server with out Business Central, please note that in section 4.2, step 4: the name `curriculum-course-v1.0` was selected. Therefore you will create the container name variable with the following command:
+    ```bash
+    export CONTAINER_NAME=curriculum-course-v1.0
+    ```
+2. Invoke the solver API. __TODO: SET THE CURL INFORMATION TO INVOKE REST API__
+  ```bash
+  export CONTAINER_NAME=curriculum-course-1.0
+  ```
