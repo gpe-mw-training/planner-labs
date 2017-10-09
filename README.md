@@ -180,12 +180,29 @@ The following steps are optional:
 
 1. Change directory to `~/lab` and clone the gitHub repository locally.
   ```bash
-  cat ~/lab/bpms/kieserver/bin/standalone.conf | grep optaplanner
+  cd ~/lab
+  git clone https://github.com/gpe-mw-training/planner-labs.git
   ```
 2. Checkout the `solved` branch.
+  ```bash
+  cd ~/lab/planner-labs
+  git checkout solved
+  ```
 3. Use maven to build the component jar file.
+  ```bash
+  cd ~/lab/planner-labs/curriculumcourse
+  mvn clean install
+  ```
 4. Use the KIE Server REST API to create a container based on the previously created jar.
-
+  ```bash
+  curl -X PUT -H "Accept:application/json" -H "Content-Type:application/json" --user kieserver:kieserver1! \
+  -d '{"release-id":{"group-id":"org.acme.optaplanner","artifact-id":"curriculumcourse","version":"1.0"}}' \
+  "http://localhost:8230/kie-server/services/rest/server/containers/curriculum-course-v1.0"
+  ```
+5. Confirm that the container has been created by listing the containers in the KIE Server using the REST API:
+  ```bash
+  curl -X GET -H "Accept: application/json" --user jboss:bpms http://localhost:8230/kie-server/services/rest/server/containers
+  ```
 # 5. Use the solution with the KIE Server REST API.
-# 5.1. Explore the dataset
-# 5.2. Invoke the REST API with the given dataset
+## 5.1. Explore the dataset
+## 5.2. Invoke the REST API with the given dataset

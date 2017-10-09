@@ -1,0 +1,337 @@
+<org.acme.optaplanner.curriculumcourse.CourseSchedule>
+  <id>1</id>
+  <name>Curriculum course schedule example</name>
+  <!-- 4 teachers -->
+  <teacherList>
+    <org.acme.optaplanner.curriculumcourse.Teacher>
+      <code>Teacher 1</code>
+    </org.acme.optaplanner.curriculumcourse.Teacher>
+    <org.acme.optaplanner.curriculumcourse.Teacher>
+      <code>Teacher 2</code>
+    </org.acme.optaplanner.curriculumcourse.Teacher>
+    <org.acme.optaplanner.curriculumcourse.Teacher>
+      <code>Teacher 3</code>
+    </org.acme.optaplanner.curriculumcourse.Teacher>
+    <org.acme.optaplanner.curriculumcourse.Teacher>
+      <code>Teacher 4</code>
+    </org.acme.optaplanner.curriculumcourse.Teacher>
+  </teacherList>
+  <!-- 2 curriculums -->
+  <curriculumList>
+    <org.acme.optaplanner.curriculumcourse.Curriculum>
+      <code>science</code>
+    </org.acme.optaplanner.curriculumcourse.Curriculum>
+    <org.acme.optaplanner.curriculumcourse.Curriculum>
+      <code>humanities</code>
+    </org.acme.optaplanner.curriculumcourse.Curriculum>
+  </curriculumList>
+  <!-- 8 courses -->
+  <courseList>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>1</id>
+      <code>Mathematics</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[1]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>2</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[1]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>2</id>
+      <code>Physics</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[2]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>1</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[1]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>3</id>
+      <code>Chemistry</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[2]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>1</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[1]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>4</id>
+      <code>Philosophy</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[4]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>1</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[2]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>5</id>
+      <code>History</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[3]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>2</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[2]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>6</id>
+      <code>Art</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[3]" />
+      <lectureSize>2</lectureSize>
+      <minWorkingDaySize>1</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[2]" />
+      </curriculumList>
+      <studentSize>50</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>7</id>
+      <code>English</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[1]" />
+      <lectureSize>3</lectureSize>
+      <minWorkingDaySize>3</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[1]" />
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[2]" />
+      </curriculumList>
+      <studentSize>150</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+    <org.acme.optaplanner.curriculumcourse.Course>
+      <id>8</id>
+      <code>German</code>
+      <teacher reference="../../../teacherList/org.acme.optaplanner.curriculumcourse.Teacher[4]" />
+      <lectureSize>3</lectureSize>
+      <minWorkingDaySize>3</minWorkingDaySize>
+      <curriculumList>
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[1]" />
+        <org.acme.optaplanner.curriculumcourse.Curriculum reference="../../../../curriculumList/org.acme.optaplanner.curriculumcourse.Curriculum[2]" />
+      </curriculumList>
+      <studentSize>150</studentSize>
+    </org.acme.optaplanner.curriculumcourse.Course>
+  </courseList>
+  <!-- 3 days -->
+  <dayList>
+    <org.acme.optaplanner.curriculumcourse.Day>
+      <dayIndex>0</dayIndex>
+      <periodList>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]" />
+          <timeslot>
+            <timeslotIndex>0</timeslotIndex>
+          </timeslot>
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]" />
+          <timeslot>
+            <timeslotIndex>1</timeslotIndex>
+          </timeslot>
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]" />
+          <timeslot>
+            <timeslotIndex>2</timeslotIndex>
+          </timeslot>
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]" />
+          <timeslot>
+            <timeslotIndex>3</timeslotIndex>
+          </timeslot>
+        </org.acme.optaplanner.curriculumcourse.Period>
+      </periodList>
+    </org.acme.optaplanner.curriculumcourse.Day>
+    <org.acme.optaplanner.curriculumcourse.Day>
+      <dayIndex>1</dayIndex>
+      <periodList>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[2]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[2]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[2]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[2]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+      </periodList>
+    </org.acme.optaplanner.curriculumcourse.Day>
+    <org.acme.optaplanner.curriculumcourse.Day>
+      <dayIndex>2</dayIndex>
+      <periodList>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[3]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[3]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[3]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+        <org.acme.optaplanner.curriculumcourse.Period>
+          <day reference="../../../../org.acme.optaplanner.curriculumcourse.Day[3]" />
+          <timeslot reference="../../../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]/timeslot" />
+        </org.acme.optaplanner.curriculumcourse.Period>
+      </periodList>
+    </org.acme.optaplanner.curriculumcourse.Day>
+  </dayList>
+  <timeslotList>
+    <org.acme.optaplanner.curriculumcourse.Timeslot
+      reference="../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]/timeslot" />
+      <org.acme.optaplanner.curriculumcourse.Timeslot
+        reference="../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]/timeslot" />
+      <org.acme.optaplanner.curriculumcourse.Timeslot
+        reference="../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]/timeslot" />
+      <org.acme.optaplanner.curriculumcourse.Timeslot
+        reference="../../org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]/timeslot" />
+  </timeslotList>
+  <periodList>
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[1]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[2]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[2]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[2]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[2]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[3]/periodList/org.acme.optaplanner.curriculumcourse.Period[1]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[3]/periodList/org.acme.optaplanner.curriculumcourse.Period[2]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[3]/periodList/org.acme.optaplanner.curriculumcourse.Period[3]" />
+    <org.acme.optaplanner.curriculumcourse.Period
+      reference="../../dayList/org.acme.optaplanner.curriculumcourse.Day[3]/periodList/org.acme.optaplanner.curriculumcourse.Period[4]" />
+  </periodList>
+  <roomList>
+    <org.acme.optaplanner.curriculumcourse.Room>
+      <code>A-1</code>
+      <capacity>150</capacity>
+    </org.acme.optaplanner.curriculumcourse.Room>
+    <org.acme.optaplanner.curriculumcourse.Room>
+      <code>B-1</code>
+      <capacity>50</capacity>
+    </org.acme.optaplanner.curriculumcourse.Room>
+    <org.acme.optaplanner.curriculumcourse.Room>
+      <code>B-3</code>
+      <capacity>50</capacity>
+    </org.acme.optaplanner.curriculumcourse.Room>
+  </roomList>
+  <lectureList>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>0</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[1]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>1</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[1]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>2</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[5]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>3</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[5]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>4</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[7]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>5</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[7]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>6</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[7]"/>
+      <lectureIndexInCourse>2</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>7</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[8]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>8</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[8]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>9</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[8]"/>
+      <lectureIndexInCourse>2</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>10</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[2]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>11</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[2]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>12</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[3]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>13</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[3]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>14</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[4]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>15</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[4]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>16</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[6]"/>
+      <lectureIndexInCourse>0</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+    <org.acme.optaplanner.curriculumcourse.Lecture>
+      <id>17</id>
+      <course reference="../../../courseList/org.acme.optaplanner.curriculumcourse.Course[6]"/>
+      <lectureIndexInCourse>1</lectureIndexInCourse>
+    </org.acme.optaplanner.curriculumcourse.Lecture>
+  </lectureList>
+</org.acme.optaplanner.curriculumcourse.CourseSchedule>
