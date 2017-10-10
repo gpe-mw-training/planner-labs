@@ -221,7 +221,13 @@ In the example data set there is:
     ```bash
     export CONTAINER_NAME=curriculum-course-v1.0
     ```
-2. Invoke the solver API. __TODO: SET THE CURL INFORMATION TO INVOKE REST API__
+2. Invoke the solver API.
   ```bash
-  export CONTAINER_NAME=curriculum-course-1.0
+  curl -X POST -H "Content-Type=application/xml" -H "X-KIE-ContentType=xstream" -H "Accept=application/xml" -d @../resources/DataSets/curriculum01.xml --user jboss:bpms http://localhost:8230/kie-server/services/rest/server/containers/$CONTAINER_NAME/solvers/curriculumSolverConfig
   ```
+3. After waiting for 1 minute: Get the best solution from the solver:
+  ```bash
+  curl -X POST -H "Content-Type=application/xml" -H "X-KIE-ContentType=xstream" -H "Accept=application/xml" -d @../resources/DataSets/curriculum01.xml --user jboss:bpms http://localhost:8230/kie-server/services/rest/server/containers/$CONTAINER_NAME/solvers/curriculumSolverConfig
+  ```
+# CHALLENGE
+Develop a java console application that use an embedded OptaPlanner library. The console application is ought to receive a data set and find the best solution using the current solver configuration and project.
